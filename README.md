@@ -27,7 +27,7 @@ Make sure you have the following installed:
 2. Execute tests using **run_tests.bat**.
 3. To generate HTML reports.
 
-##commands to run tests
+## Commands to run tests
 
 1. **pytest -v -s --html=./Reports/automation_report.html testCases/ --browser=chrome** use to run all testcases in testCases folder and generate html reports
 2. **pytest -v -s -m "sanity" testCases/ --browser=chrome** use to run testcases marked as sanity, Replace "sanity" with "regression" or "smoke" to run marked testcases
@@ -35,19 +35,21 @@ Make sure you have the following installed:
 
 ## Structure
 ecommerce-automation/
-│
+
 ├── testCases/ # Test case files
-│
+
 ├── pageObjects/ # Page object files
-│
+
 ├── TestData/ # Test data files (Excel, CSV, etc.)
-│
+
 ├── utilities/ # Utility files
-│
+
 ├── Reports/ # Test execution reports
-│
+
 ├── config.ini # Configuration file
+
 ├── requirements.txt # Python dependencies
+
 └── README.md # Project documentation
 
 
