@@ -5,23 +5,15 @@ import pytest
 
 @pytest.fixture()
 def setup(browser):
-    if browser is None:
+    if browser is None or browser.lower() == 'chrome':
         options = webdriver.ChromeOptions()
         options.add_experimental_option("detach", True)
         driver = webdriver.Chrome(options=options)
-        print("Launching chrome browser.........")
-    elif browser.lower() == 'chrome':
-        options = webdriver.ChromeOptions()
-        options.add_experimental_option("detach", True)
-        driver = webdriver.Chrome(options=options)
-        print("Launching chrome browser.........")
     elif browser.lower() == 'firefox':
-        options = webdriver.FirefoxOptions()
-        options.add_argument("--detach")
-        driver = webdriver.Firefox(options=options)
-        print("Launching firefox browser.........")
+        driver = webdriver.Firefox()
     else:
         raise ValueError(f"Unsupported browser: {browser}")
+    print(f"Launching {browser if browser else 'chrome'} browser.....")
     return driver
 
 

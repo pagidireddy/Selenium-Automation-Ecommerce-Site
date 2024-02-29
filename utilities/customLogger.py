@@ -1,11 +1,16 @@
 import logging
+import os
 
 
 class LogGenerator:
     @staticmethod
     def loggen():
-        logging.basicConfig(filename="automation.log",
-                            format='%(asctime)s: %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
-        logger = logging.getLogger()
+        logger = logging.getLogger(__file__)
         logger.setLevel(logging.INFO)
+        try:
+            handler = logging.FileHandler(".\\Logs\\automation.log")
+        except:
+            handler = logging.FileHandler(os.path.dirname(os.getcwd())+"\\Logs\\automation.log")
+        handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
+        logger.addHandler(handler)
         return logger
